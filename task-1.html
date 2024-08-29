@@ -4,13 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Task 1</title>
-  <script src="./task-1.js" defer></script>
+  <script src="./task-1.js" defer></script>  
+  <link rel="stylesheet" href="./task-1.css" />
 </head>
 <body>
-  <div>
-    <p class="taskTitle">3ABДAHHЯ l</p>
-    <button id="allertButton">SHOW ME</button>
-    <input id="allertInput" type="text" />
+  <a href="./index.html">Home page</a>
+
+  <div class="toolbar">
+    <!-- Розмітка перимикача теми -->    
+    <div class="theme-switch__control">    
+      <input class="theme-switch__toggle" type="checkbox" name="theme" id="theme-switch-toggle" 
+              aria-label="Переключити між темною та світлою темою" />
+      <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle"></label>    
+      <div aria-hidden="true" class="theme-switch__marker"></div>    
+    </div>    
   </div>
+  
+  <span>Textcolor check</span>
 </body>
 </html>

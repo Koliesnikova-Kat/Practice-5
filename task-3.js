@@ -1,40 +1,31 @@
-// Кнопка "Зменшити" повинна зменшувати квадрат на 10 пікселів, а кнопка "Збільшити" - збільшувати квадрат на 10 пікселів.
+// Створіть функцію delayedPromise, яка приймає час затримки (у мілісекундах) та повертає проміс.
+// Цей проміс має виконатися після вказаної затримки і вивести повідомлення в консоль "Пройшло delay мілісекунд".
+// Якщо переданий аргумент не є числом, логуй повідомлення про помилку "Затримка має бути числом".
 
-const buttonDecrease = document.querySelector('#decrease');
-const buttonIncrease = document.querySelector('#increase');
-const boxEl = document.querySelector('#box');
+function delayedPromise(delay) {  
+  const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (typeof delay === 'number') {
+        resolve(delay);
+      } else {
+        reject(`Затримка має бути числом!`);
+      }
+    }, delay);
+  });
 
+  promise
+    .then((delay) => {
+      console.log(`Пройшло ${delay} мілісекунд!`);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  
+  return promise;
+}
 
-// ! Спосіб 1 //
-const onButtonDecreaseClick = event => {
-  event.preventDefault();
-  boxEl.style.width = `${boxEl.offsetWidth - 10}px`;
-  boxEl.style.height = `${boxEl.offsetHeight - 10}px`;
-};
-
-const onButtonIncreaseClick = event => {
-  event.preventDefault();
-  boxEl.style.width = `${boxEl.offsetWidth + 10}px`;
-  boxEl.style.height = `${boxEl.offsetHeight + 10}px`;
-};
-
-buttonDecrease.addEventListener('click', onButtonDecreaseClick);
-buttonIncrease.addEventListener('click', onButtonIncreaseClick);
-
-
-
-// ! Спосіб 2 //
-const onButtonClick = event => {
-  event.preventDefault();
-  const id = event.target.id;
-  if (id === 'increase') {
-    boxEl.style.width = `${boxEl.offsetWidth + 10}px`;
-    boxEl.style.height = `${boxEl.offsetHeight + 10}px`;
-  } else {
-    boxEl.style.width = `${boxEl.offsetWidth - 10}px`;
-    boxEl.style.height = `${boxEl.offsetHeight - 10}px`;
-  }  
-};
-
-buttonDecrease.addEventListener('click', onButtonClick);
-buttonIncrease.addEventListener('click', onButtonClick);
+delayedPromise('Hello!');
+delayedPromise(1000);
+delayedPromise(2000);
+delayedPromise(true);
+delayedPromise(3000);
